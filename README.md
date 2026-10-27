@@ -1,0 +1,12 @@
+# The Divine Tarot – Support (Next.js 14, App Router)
+
+    npm install
+    npm run dev      # http://localhost:3000
+
+- `components/Header.tsx` and `components/Footer.tsx` are your originals, unchanged.
+- Replace `public/logo.png` with your real logo (placeholder included).
+- Tickets post to `/api/support`, which forwards to your Google Apps Script.
+  Set `SUPPORT_SCRIPT_URL` in `.env.local` (see `.env.example`).
+- `/api/subscribe` (footer newsletter) is a stub – connect your list provider.
+- `hooks/useLanguage.ts`, `components/LanguageSwitcher.tsx`, `lib/utils.ts` are minimal
+  stand-ins for the files your Header/Footer import; swap in your real ones if you have them.
