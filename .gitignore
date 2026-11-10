@@ -7,5 +7,8 @@ next-env.d.ts
 *.tgz
 *.zip
 .kilo/
+<<<<<<< HEAD
 *.csv
 activate_razorpay_subscribers.sql
+=======
+>>>>>>> 3f71990febd8e46b0c8d2cc784519dde39bdaa5f
