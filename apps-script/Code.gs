@@ -149,8 +149,8 @@ function getFolder_() {
 /** Accepts "data:image/png;base64,...." and returns a Drive File (or null). */
 function saveScreenshot_(dataUrl, baseName) {
   if (!dataUrl || typeof dataUrl !== 'string') return null;
-  var m = dataUrl.match(/^data:([^;]+);base64,(.+)$/);
-  if (!m) return null;
+  var m = dataUrl.match(/^data:(image\/(?:png|jpe?g|webp|gif|heic|heif));base64,(.+)$/);
+  if (!m) return null; // only real images are saved (no SVG/HTML or other file types)
   var mime  = m[1];
   var bytes = Utilities.base64Decode(m[2]);
   var ext   = (mime.split('/')[1] || 'png').replace('jpeg', 'jpg');

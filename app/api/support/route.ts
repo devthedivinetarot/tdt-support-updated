@@ -7,6 +7,7 @@ const SCRIPT_URL = process.env.SUPPORT_SCRIPT_URL;
 
 const ISSUES = ['login_after_sub', 'billing', 'technical', 'other'];
 const MAX_IMAGE_CHARS = 3_500_000; // ~2.5 MB file after base64
+const IMAGE_DATA_URL = /^data:image\/(png|jpe?g|webp|gif|heic|heif);base64,[A-Za-z0-9+/=]+$/;
 
 export async function POST(req: Request) {
   let body: Record<string, unknown>;
@@ -30,6 +31,13 @@ export async function POST(req: Request) {
     if (img && (typeof img !== 'string' || img.length > MAX_IMAGE_CHARS)) {
       return NextResponse.json({ status: 'error', message: 'Screenshot is too large' }, { status: 413 });
     }
+    // Only real images go to Drive (no SVG/HTML or other files disguised as screenshots).
+    if (img && !IMAGE_DATA_URL.test(img)) {
+      return NextResponse.json({ status: 'error', message: 'Screenshots must be PNG, JPG, WEBP or HEIC images' }, { status: 400 });
+    }
+  }
+  if (name.length > 120 || email.length > 254 || description.length > 5000) {
+    return NextResponse.json({ status: 'error', message: 'Please shorten your message' }, { status: 400 });
   }
 
   if (!SCRIPT_URL) {

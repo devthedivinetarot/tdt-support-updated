@@ -13,13 +13,42 @@ const ISSUE_VALUES = ['login_after_sub', 'billing', 'technical', 'other'] as con
 
 const INITIAL = { name: '', email: '', issueType: 'login_after_sub', message: '' };
 
-const fileToBase64 = (file: File) =>
+const readAsDataUrl = (file: Blob) =>
   new Promise<string>((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = () => resolve(reader.result as string);
     reader.onerror = () => reject(reader.error);
     reader.readAsDataURL(file);
   });
+
+// Vercel functions accept at most 4.5 MB per request, so two full-size phone screenshots
+// would be rejected. Shrink each image to max 1600 px as JPEG before sending; keep the
+// original only if it is already smaller (or the browser cannot decode it).
+const MAX_SIDE = 1600;
+const fileToBase64 = async (file: File): Promise<string> => {
+  const original = await readAsDataUrl(file);
+  try {
+    const img = await new Promise<HTMLImageElement>((resolve, reject) => {
+      const el = new Image();
+      el.onload = () => resolve(el);
+      el.onerror = reject;
+      el.src = original;
+    });
+    const scale = Math.min(1, MAX_SIDE / Math.max(img.naturalWidth, img.naturalHeight));
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.max(1, Math.round(img.naturalWidth * scale));
+    canvas.height = Math.max(1, Math.round(img.naturalHeight * scale));
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return original;
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    const compressed = canvas.toDataURL('image/jpeg', 0.82);
+    return compressed.length < original.length ? compressed : original;
+  } catch {
+    return original;
+  }
+};
 
 const inputCls =
   'w-full bg-[#121212] border border-white/10 rounded-xl px-4 py-3.5 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/50 transition-all';
