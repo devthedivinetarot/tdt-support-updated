@@ -89,7 +89,7 @@ const Footer = () => {
 
   const quickLinks = [
     { nameKey: 'footer.quickLinks.about', name: 'About', href: 'https://thedivinetarotonline.com/about' },
-    { nameKey: 'Support', name: 'Support', href: 'https://support.thedivinetarotonline.com/' },
+    { nameKey: 'footer.quickLinks.support', name: 'Support', href: 'https://support.thedivinetarotonline.com/' },
     // { nameKey: 'footer.quickLinks.premium', name: 'Premium', href: 'https://reading.thedivinetarotonline.com/?upgrade=1' },
   ];
 
@@ -105,7 +105,7 @@ const Footer = () => {
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-500/10 border border-amber-500/30 flex items-center justify-center overflow-hidden">
-              <Image src="/logo.png" alt="The Divine Tarot Logo" width={40} height={40} className="w-10 h-10 object-contain" />
+              <Image src="/logo.png" alt="The Divine Tarot Logo" width={40} height={47} className="w-10 h-10 object-contain" />
             </div>
             <div>
               <h3 className="font-serif text-lg font-bold text-[#EAEAF0]">The Divine Tarot</h3>
@@ -153,7 +153,7 @@ const Footer = () => {
             ))}
           </div>
           <Link href="/privacy" className="mt-3 text-xs text-[#A1A1AA]/70 hover:text-amber-500 transition-colors w-fit">
-            {t('footer.privacyPolicy')}
+            {t('footer.privacy')}
           </Link>
         </div>
 
@@ -230,7 +230,14 @@ const Footer = () => {
             {t('footer.privacy')}
           </Link>
           <span className="w-px h-3 bg-white/10" />
-          <span>&copy; {new Date().getFullYear()} The Divine Tarot. {t('footer.rights')}</span>
+          <a
+            href="https://thedivinetarotonline.com/refund-policy"
+            className="text-gray-400 hover:text-amber-400 transition-colors duration-200"
+          >
+            {t('footer.refunds')}
+          </a>
+          <span className="w-px h-3 bg-white/10" />
+          <span>&copy; {new Date().getFullYear()} {t('footer.copyright')}</span>
         </div>
       </div>
     </footer>

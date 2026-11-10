@@ -15,7 +15,8 @@ const navLinks: { href: string; labelKey: string; isExternal?: boolean }[] = [
   { href: 'https://reading.thedivinetarotonline.com/', labelKey: 'nav.reading' },
   { href: 'https://learn.thedivinetarotonline.com/', labelKey: 'nav.course', isExternal: true },
   { href: 'https://thedivinetarotonline.com/kundli-milan', labelKey: 'nav.kundli' },
-  // { href: 'https://booking.thedivinetarotonline.com/', labelKey: 'nav.Personal Reading', isExternal: true },
+  { href: 'https://thedivinetarotonline.com/reports', labelKey: 'nav.reports' },
+  { href: 'https://booking.thedivinetarotonline.com/', labelKey: 'nav.personalReading', isExternal: true },
 ];
 
 const HOME_HREF = 'https://thedivinetarotonline.com/';
@@ -76,7 +77,7 @@ export default function Header() {
                 src="/logo.png"
                 alt="The Divine Tarot Logo"
                 width={40}
-                height={40}
+                height={47}
                 className="object-contain transition-transform duration-300 group-hover:scale-105"
               />
             </div>

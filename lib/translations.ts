@@ -3,10 +3,10 @@ export type Language = 'en' | 'hi' | 'hinglish';
 export const DEFAULT_LANGUAGE: Language = 'en';
 export const LANGUAGE_COOKIE = 'tdt-lang';
 
-export const languages: { code: Language; label: string; htmlLang: string }[] = [
-  { code: 'en', label: 'English', htmlLang: 'en' },
-  { code: 'hi', label: 'हिन्दी', htmlLang: 'hi' },
-  { code: 'hinglish', label: 'Hinglish', htmlLang: 'en-IN' },
+export const languages: { code: Language; label: string; short: string; htmlLang: string }[] = [
+  { code: 'en', label: 'English', short: 'EN', htmlLang: 'en' },
+  { code: 'hi', label: 'हिंदी', short: 'हिंदी', htmlLang: 'hi' },
+  { code: 'hinglish', label: 'Hinglish', short: 'Hinglish', htmlLang: 'en-IN' },
 ];
 
 export const isLanguage = (v: unknown): v is Language =>
@@ -21,6 +21,8 @@ const en: Dict = {
   'nav.reading': 'Reading',
   'nav.course': 'Course',
   'nav.kundli': 'Kundli Milan',
+  'nav.personalReading': 'Personal Reading',
+  'nav.reports': 'Reports',
   'nav.askQuestion': 'Ask your question here',
   'nav.menu': 'Menu',
   'nav.openMenu': 'Open menu',
@@ -29,7 +31,7 @@ const en: Dict = {
   'nav.newTab': 'opens in new tab',
 
   'footer.tagline': 'Premium Tarot Guidance',
-  'footer.description': 'Guiding your path with clarity, intuition, and spiritual insight.',
+  'footer.description': 'Clarity for your path. Guidance for your soul.',
   'footer.quickLinks.title': 'Quick Links',
   'footer.quickLinks.about': 'About',
   'footer.connect': 'Connect With Us',
@@ -52,6 +54,9 @@ const en: Dict = {
   'footer.trust.authentic': 'Authentic Spiritual Guidance',
   'footer.designedBy': 'Designed by',
   'footer.rights': 'All rights reserved.',
+  'footer.copyright': 'The Divine Tarot. All rights reserved.',
+  'footer.refunds': 'Refunds',
+  'footer.quickLinks.support': 'Support',
 
   'support.title': 'Login issues after subscribing?',
   'support.intro':
@@ -92,10 +97,12 @@ const en: Dict = {
 const hi: Dict = {
   'lang.label': 'भाषा',
   'nav.home': 'होम',
-  'nav.about': 'हमारे बारे में',
+  'nav.about': 'मेरे बारे में',
   'nav.reading': 'रीडिंग',
   'nav.course': 'कोर्स',
   'nav.kundli': 'कुंडली मिलान',
+  'nav.personalReading': 'पर्सनल रीडिंग',
+  'nav.reports': 'रिपोर्ट्स',
   'nav.askQuestion': 'अपना सवाल यहाँ पूछें',
   'nav.menu': 'मेन्यू',
   'nav.openMenu': 'मेन्यू खोलें',
@@ -104,13 +111,13 @@ const hi: Dict = {
   'nav.newTab': 'नए टैब में खुलता है',
 
   'footer.tagline': 'प्रीमियम टैरो मार्गदर्शन',
-  'footer.description': 'स्पष्टता, अंतर्ज्ञान और आध्यात्मिक समझ के साथ आपकी राह का मार्गदर्शन।',
-  'footer.quickLinks.title': 'क्विक लिंक्स',
-  'footer.quickLinks.about': 'हमारे बारे में',
+  'footer.description': 'अपने रास्ते की स्पष्टता। अपनी आत्मा के लिए मार्गदर्शन।',
+  'footer.quickLinks.title': 'त्वरित लिंक',
+  'footer.quickLinks.about': 'के बारे में',
   'footer.connect': 'हमसे जुड़ें',
   'footer.privacy': 'गोपनीयता',
   'footer.privacyPolicy': 'गोपनीयता नीति',
-  'footer.newsletter.title': 'रोज़ाना दिव्य संदेश पाएँ',
+  'footer.newsletter.title': 'रोज़ का दिव्य संदेश पाएँ',
   'footer.newsletter.email': 'आपका ईमेल',
   'footer.newsletter.emailLabel': 'रोज़ाना संदेश के लिए ईमेल',
   'footer.newsletter.phone': 'व्हाट्सएप नंबर (वैकल्पिक)',
@@ -127,6 +134,9 @@ const hi: Dict = {
   'footer.trust.authentic': 'प्रामाणिक आध्यात्मिक मार्गदर्शन',
   'footer.designedBy': 'डिज़ाइन:',
   'footer.rights': 'सर्वाधिकार सुरक्षित।',
+  'footer.copyright': 'द डिवाइन टैरो। सर्वाधिकार सुरक्षित।',
+  'footer.refunds': 'Refunds',
+  'footer.quickLinks.support': 'सहायता',
 
   'support.title': 'सब्सक्राइब करने के बाद लॉगिन नहीं हो रहा?',
   'support.intro':
@@ -167,11 +177,13 @@ const hi: Dict = {
 const hinglish: Dict = {
   'lang.label': 'Language',
   'nav.home': 'Home',
-  'nav.about': 'Hamare Baare Mein',
+  'nav.about': 'About',
   'nav.reading': 'Reading',
   'nav.course': 'Course',
   'nav.kundli': 'Kundli Milan',
-  'nav.askQuestion': 'Apna sawaal yahan poochhein',
+  'nav.personalReading': 'Personal Reading',
+  'nav.reports': 'Reports',
+  'nav.askQuestion': 'Apna sawaal yahan poochho',
   'nav.menu': 'Menu',
   'nav.openMenu': 'Menu kholein',
   'nav.closeMenu': 'Menu band karein',
@@ -179,13 +191,13 @@ const hinglish: Dict = {
   'nav.newTab': 'naye tab mein khulta hai',
 
   'footer.tagline': 'Premium Tarot Guidance',
-  'footer.description': 'Clarity, intuition aur spiritual insight ke saath aapki raah ka margdarshan.',
+  'footer.description': 'Apne raaste ki clarity. Apni aatma ke liye guidance.',
   'footer.quickLinks.title': 'Quick Links',
-  'footer.quickLinks.about': 'Hamare Baare Mein',
-  'footer.connect': 'Humse Judein',
+  'footer.quickLinks.about': 'About',
+  'footer.connect': 'Humse Judo',
   'footer.privacy': 'Privacy',
   'footer.privacyPolicy': 'Privacy Policy',
-  'footer.newsletter.title': 'Roz Divine Insights Paayein',
+  'footer.newsletter.title': 'Roz ka Divine Message Pao',
   'footer.newsletter.email': 'Aapka email',
   'footer.newsletter.emailLabel': 'Daily insights ke liye email',
   'footer.newsletter.phone': 'WhatsApp number (optional)',
@@ -202,6 +214,9 @@ const hinglish: Dict = {
   'footer.trust.authentic': 'Authentic Spiritual Guidance',
   'footer.designedBy': 'Designed by',
   'footer.rights': 'Sabhi adhikaar surakshit.',
+  'footer.copyright': 'The Divine Tarot. All rights reserved.',
+  'footer.refunds': 'Refunds',
+  'footer.quickLinks.support': 'Support',
 
   'support.title': 'Subscribe karne ke baad login nahi ho raha?',
   'support.intro':
