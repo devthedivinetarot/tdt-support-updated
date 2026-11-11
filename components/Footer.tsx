@@ -214,7 +214,7 @@ const Footer = () => {
       </div>
 
       <div className="border-t border-white/10 mt-4 pt-6 flex flex-col md:flex-row justify-between text-sm text-gray-400 px-6">
-        <div>
+        {/* <div>
           {t('footer.designedBy')}{' '}
           <a
             href="https://sitelytc.com/"
@@ -224,7 +224,7 @@ const Footer = () => {
           >
             Sitelytc
           </a>
-        </div>
+        </div> */}
         <div className="flex items-center gap-4 mt-2 md:mt-0">
           <Link href="/privacy" className="text-gray-400 hover:text-amber-400 transition-colors duration-200">
             {t('footer.privacy')}
